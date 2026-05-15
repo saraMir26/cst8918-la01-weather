@@ -26,18 +26,27 @@ const units = 'metric'
 export async function loader() {
   // TODO: accept query params for location and units
   // TODO: look up location by postal code
-
+  
   const data = await fetchWeatherData({
     lat: location.lat,
     lon: location.lon,
     units: units,
   })
+  console.log("API RESPONSE:", data)
+
+  
   return json({ currentConditions: data })
 }
 
 export default function CurrentConditions() {
   const { currentConditions } = useLoaderData<typeof loader>()
-  const weather = currentConditions.weather[0]
+  // Added the guard to fix the error when weather is undefined. This can happen when the API response doesn't include weather data for some reason.
+  //if (!currentConditions?.weather?.[0]) {
+    //  return <p>No weather data available</p>
+  //}
+
+  const weather = currentConditions?.weather?.[0]
+  
   return (
     <>
       <main
