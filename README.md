@@ -2,7 +2,7 @@
 
 #  CST8918 - Lab A01: Weather App (Kubernetes)
 
-**Student Name:** Sara Mirzaei
+**Name:** Sara Mirzaei
 **Course:** CST8918 - DevOps: Infrastructure as Code
 **Instructor:** Robert McKenney
 
