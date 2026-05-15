@@ -8,12 +8,12 @@ ENV NODE_ENV production
 # RUN apk -U add --update-cache openssl sqlite
 
 # Create user and set ownership and permissions as required
-RUN <<EOT 
-addgroup student && 
-adduser -D -H -g "student" -G student student && 
-mkdir /cst8918-a01 && 
-chown -R student:student /cst8918-a01
-EOT
+# since There were error with "<<EOT"  i needed to remove it and use the normal way to run multiple commands in one RUN instruction
+RUN addgroup student && \
+    adduser -D -H -g "student" -G student student && \
+    mkdir /cst8918-a01 && \
+    chown -R student:student /cst8918-a01
+
 
 # Install all node_modules, including dev dependencies
 FROM base as deps
